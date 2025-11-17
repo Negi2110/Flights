@@ -13,4 +13,13 @@ router.post('/',
 
 // /api/v1/flights?trips=MUM-DEl GEt
 router.get('/', FlightController.getAllFlights);
+// /api/v1/flights/:id GEt
+router.get('/:id', FlightController.getFlight);
+
+// /api/v1/flights/:id/seats PATCH
+router.patch(
+        '/:id/seats', 
+        FlightMiddlewares.validateUpdateSeatsRequest,
+        FlightController.updateSeats
+);
 module.exports = router;
